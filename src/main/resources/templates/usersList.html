@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>All Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8"/>
+    <title>User Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/user.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="#">Project name</a>
+    <a class="text-secondary allign-self-right" href="/logout">Log out</a>
+</nav>
+<div class="row no-gutters h-100">
+    <div class="col-2 mt-3">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#admin">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#user">User</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-10 bg-light h-100">
+        <div class="tab-content">
+            <div class="tab-pane fade show container-fluid active" id="admin">
+                <div class="row-fluid mb-5 ml-3 mt-3">
+                    <p class="h1">Admin panel</p>
+                </div>
+                <div class="container-fluid">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-admin" role="tab" aria-controls="nav-admin" aria-selected="true">User's list</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="false">Add new user</a>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active mb-3" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
+                            <div class="w-100 p-2 border bg-light">
+                                All users
+                            </div>
+                            <div class="container-fluid border border-top-0" style="background-color: #fff;">
+                                <table class="table table-striped text-center">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Password</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody  id="userList">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        <div class="tab-pane fade mb-3" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+                            <div class="w-100 p-2 border bg-light">
+                                Add new user
+                            </div>
+                            <div class="container-fluid text-center">
+                                <div class="row row-cols-1 justify-content-center bg-white border">
+                                    <div class="col-2" id="addUserForm">
+                                            <label for="username" class="font-weight-bold">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username" placeholder="username" value=""/>
+
+                                            <label for="userage" class="font-weight-bold">Age</label>
+                                            <input type="text" class="form-control" name="age" id="userage" placeholder="age" value=""/>
+
+                                            <label class="font-weight-bold">Roles</label>
+                                            <div class="row row-fluid justify-content-center">
+                                                <div class="col"><input type="checkbox" id="roleAdmin" class="form-check-input" name="userRoles" value="ADMIN"><label for="roleAdmin">Admin</label></div>
+                                                <div class="col"><input type="checkbox" id="roleUser" class="form-check-input" name="userRoles" value="USER"><label for="roleUser">User</label></div>
+                                            </div>
+
+                                            <label for="userpassword" class="font-weight-bold">Password</label>
+                                            <input type="text" class="form-control" name="password" id="userpassword" placeholder="password" value=""/>
+
+                                            <button id="addUserBtn" class="btn btn-primary mt-3 mb-3" onclick="addUser()">Add new user</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade container-fluid fade" id="user">
+                <div class="container-fluid">
+                    <p class="h1">User Page</p>
+                    <p>Hello <text sec:authentication="name">username</text></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div id="modals">
+
+</div>
+<div id="test2">
+</div>
+</body>
+</html>
